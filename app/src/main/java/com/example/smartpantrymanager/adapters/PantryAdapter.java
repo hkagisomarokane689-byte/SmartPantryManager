@@ -12,13 +12,14 @@ import com.example.smartpantrymanager.R;
 import com.example.smartpantrymanager.entities.PantryItem;
 
 import java.util.List;
-
 public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder> {
 
     private final List<PantryItem> items;
+
     public PantryAdapter(List<PantryItem> items) {
         this.items = items;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(
@@ -27,6 +28,7 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_ingredient, parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -34,16 +36,24 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
     public void onBindViewHolder(
             @NonNull ViewHolder holder,
             int position) {
+
         PantryItem item = items.get(position);
+
         holder.txtName.setText(item.getName());
+
         holder.txtDetails.setText(
-                item.getQuantity() + " " + item.getUnit()
+                "Quantity: " +
+                        item.getQuantity() +
+                        " | Unit: " +
+                        item.getUnit()
         );
     }
+
     @Override
     public int getItemCount() {
         return items.size();
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtName;
