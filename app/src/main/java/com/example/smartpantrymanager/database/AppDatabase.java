@@ -13,5 +13,5 @@ import com.example.smartpantrymanager.entities.PantryItem;
 )
 
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract IngredientDao ingredientdao ();
+    public abstract IngredientDao ingredientDao();
 }
