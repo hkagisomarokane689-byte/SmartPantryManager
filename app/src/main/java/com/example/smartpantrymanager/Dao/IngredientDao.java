@@ -19,6 +19,6 @@ public interface IngredientDao{
     @Delete
     void delete(PantryItem item);
     @Query("SELECT * FROM pantry_items")
-    List<PantryItem> getAllIngredients();
+    List<PantryItem> getAllIngredient();
 }
 

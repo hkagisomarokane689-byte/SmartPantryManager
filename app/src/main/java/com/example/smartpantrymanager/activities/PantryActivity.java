@@ -17,6 +17,20 @@ import com.example.smartpantrymanager.entities.PantryItem;
 import com.example.smartpantrymanager.R;
 
 public class PantryActivity extends AppCompatActivity {
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        List<PantryItem> pantryItems =
+                DatabaseClient.getInstance(this)
+                        .ingredientDao()
+                        .getAllIngredient();
+        PantryAdapter adapter =
+                new PantryAdapter(pantryItems);
+
+        recyclerView.setAdapter(adapter);
+    }
+
 
     private RecyclerView recyclerView;
     private Button btnAddIngredient;
@@ -26,13 +40,15 @@ public class PantryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
 
-        List<PantryItem> pantryItems =
-                DatabaseClient.getInstance(this)
-                        .ingredientDao()
-                        .getAllIngredients();
-        PantryAdapter adapter =
-                new PantryAdapter(pantryItems);
-        recyclerView.setAdapter(adapter);
+        // List<PantryItem> pantryItems =
+// DatabaseClient.getInstance(this)
+// .ingredientDao()
+// .getAllItems();
+//
+// PantryAdapter adapter =
+// new PantryAdapter(pantryItems);
+//
+// recyclerView.setAdapter(adapter);
 
         recyclerView = findViewById(R.id.recyclerView);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
