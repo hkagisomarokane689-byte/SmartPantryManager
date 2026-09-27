@@ -10,5 +10,9 @@ public class AddIngredient extends AppCompatActivity{
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredient);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+        setContentView(R.layout.activity_add_ingredient);
     }
 }
