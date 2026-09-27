@@ -32,6 +32,7 @@ public class AddIngredient extends AppCompatActivity{
         edtUnit = findViewById(R.id.edtUnit);
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> {
+
             String name = edtName.getText().toString().trim();
             String quantityText = edtQuantity.getText().toString().trim();
             String unit = edtUnit.getText().toString().trim();
