@@ -14,6 +14,7 @@ public class DatabaseClient {
                     "smart_pantry_db"
             )
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return database;
