@@ -22,6 +22,7 @@ public class PantryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button btnAddIngredient;
     private Button btnRecipes;
+    private Button btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class PantryActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
         btnRecipes = findViewById(R.id.btnRecipes);
+        btnSettings = findViewById(R.id.btnSettings);
 
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this)
@@ -60,6 +62,15 @@ public class PantryActivity extends AppCompatActivity {
             );
             startActivity(intent);
         });
+
+        btnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    PantryActivity.this,
+                    SettingActivity.class
+            );
+            startActivity(intent);
+        });
+
     }
 
     @Override

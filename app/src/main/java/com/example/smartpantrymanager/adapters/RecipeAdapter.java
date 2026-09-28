@@ -5,15 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import android.content.Intent;
+import com.example.smartpantrymanager.activities.RecipeDetailActivity;
+
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartpantrymanager.R;
 import com.example.smartpantrymanager.entities.Recipe;
-
 import java.util.List;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
+public class RecipeAdapter
+        extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
     private final List<Recipe> recipes;
 
@@ -27,8 +31,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             @NonNull ViewGroup parent,
             int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_recipe, parent, false);
+        View view = LayoutInflater.from(
+                parent.getContext()
+        ).inflate(
+                R.layout.item_recipe,
+                parent,
+                false
+        );
 
         return new ViewHolder(view);
     }
@@ -40,13 +49,30 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
         Recipe recipe = recipes.get(position);
 
-        holder.txtRecipeName.setText(recipe.getName());
+        holder.txtName.setText(recipe.getName());
+
         holder.txtIngredients.setText(
-                "Ingredients: " + recipe.getIngredients()
+                "Ingredients: " +
+                        recipe.getIngredients()
         );
+
         holder.txtSteps.setText(
-                "Steps: " + recipe.getSteps()
+                "Steps: " +
+                        recipe.getSteps()
         );
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    v.getContext(),
+                    RecipeDetailActivity.class
+            );
+
+            intent.putExtra("name", recipe.getName());
+            intent.putExtra("ingredients", recipe.getIngredients());
+            intent.putExtra("steps", recipe.getSteps());
+
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -54,23 +80,28 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         return recipes.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder
+            extends RecyclerView.ViewHolder {
 
-        TextView txtRecipeName;
+        TextView txtName;
         TextView txtIngredients;
         TextView txtSteps;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
-            txtRecipeName =
+            txtName =
                     itemView.findViewById(R.id.txtRecipeName);
 
             txtIngredients =
-                    itemView.findViewById(R.id.txtIngredients);
+                    itemView.findViewById(
+                            R.id.txtIngredients
+                    );
 
             txtSteps =
-                    itemView.findViewById(R.id.txtSteps);
+                    itemView.findViewById(
+                            R.id.txtSteps
+                    );
         }
     }
 }
