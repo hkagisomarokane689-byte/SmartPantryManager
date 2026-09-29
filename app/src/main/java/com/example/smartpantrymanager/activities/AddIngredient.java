@@ -36,13 +36,24 @@ public class AddIngredient extends AppCompatActivity{
             String name = edtName.getText().toString().trim();
             String quantityText = edtQuantity.getText().toString().trim();
             String unit = edtUnit.getText().toString().trim();
-            if (name.isEmpty() || quantityText.isEmpty() || unit.isEmpty()) {
-                Toast.makeText(this,
-                        "Please fill in all fields",
-                        Toast.LENGTH_SHORT).show();
+
+            if (name.isEmpty()) {
+                edtName.setError("Please enter an ingredient name");
+                edtName.requestFocus();
                 return;
             }
 
+            if (quantityText.isEmpty()) {
+                edtQuantity.setError("Please enter a quantity");
+                edtQuantity.requestFocus();
+                return;
+            }
+
+            if (unit.isEmpty()) {
+                edtUnit.setError("Please enter a unit");
+                edtUnit.requestFocus();
+                return;
+            }
             double quantity = Double.parseDouble(quantityText);
             PantryItem item = new PantryItem(
                     name,

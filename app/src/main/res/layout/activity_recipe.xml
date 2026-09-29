@@ -1,47 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtRecipeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/txtRecipeIngredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txtRecipeSteps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txtMethod"
-        android:layout_width="wrap_content"
-        android:layout_height = "wrap_content"/>
     <TextView
         android:id="@+id/txtNoRecipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No recipes match your pantry yet. Add more ingredients."
-        android:textAlignment="center"
+        android:text="No recipes match your pantry yet - add more ingredients."
         android:textSize="18sp"
-        android:visibility="gone"
-        android:padding="16dp"/>
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerRecipes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

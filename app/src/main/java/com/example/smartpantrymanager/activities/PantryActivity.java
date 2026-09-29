@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.example.smartpantrymanager.Dao.RecipeDao;
 import com.example.smartpantrymanager.R;
 import com.example.smartpantrymanager.adapters.PantryAdapter;
@@ -38,6 +41,7 @@ public class PantryActivity extends AppCompatActivity {
                 new LinearLayoutManager(this)
         );
 
+
         RecipeDao recipeDao =
                 DatabaseClient.getInstance(this)
                         .recipeDao();
@@ -67,6 +71,14 @@ public class PantryActivity extends AppCompatActivity {
             Intent intent = new Intent(
                     PantryActivity.this,
                     SettingActivity.class
+            );
+            startActivity(intent);
+        });
+        btnRecipes.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    PantryActivity.this,
+                    SuggestedRecipesActivity.class
             );
             startActivity(intent);
         });
